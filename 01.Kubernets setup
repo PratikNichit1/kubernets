@@ -1,4 +1,5 @@
 # Run on both Master & Worker nodes:
+sudo sh -c 'echo 1 >  /proc/sys/vm/drop_caches' 
 
 sudo apt-get update 
 sudo apt-get install docker.io 
@@ -101,6 +102,7 @@ sudo cp -i /etc/kubernetes/admin.conf "$HOME"/.kube/config
 sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml
 kubeadm token create --print-join-command
+sudo sh -c 'echo 1 >  /proc/sys/vm/drop_caches'
 
 
 # Execute on Worker Nodes
